@@ -1,48 +1,17 @@
-import { gsap } from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import scrollreveal from "scrollreveal";
 
-gsap.registerPlugin(ScrollTrigger);
-
-const bannerTitle = document.querySelector(".banner-col h1");
-const bannerText = document.querySelector(".banner-col p");
-const bannerBtn = document.querySelector(".banner-col .banner-col-btn");
-
-let bannerTl = gsap.timeline();
-
-bannerTl
-.from(bannerTitle, {
-  y: 35,
-  opacity: 0,
-  duration: 1,
-})
-.from(
-  bannerText,
-  {
-    y: 35,
-    opacity: 0,
-    duration: 1,
-  },
-  "-=.5"
-)
-.from(
-  bannerBtn,
-  {
-    y: 35,
-    opacity: 0,
-    duration: 1,
-  },
-  "-=.5"
-)
-
-gsap.to(".clip", {
-  width: "300px",
-  height: "80%",
-  top: 10,
-  left: 20,
-  scrollTrigger: {
-    trigger: ".container-img",
-    scrub: true,
-    start: "top top"
-  },
-  duration: .5
+const scrollReveal = scrollreveal({
+  origin: "top",
+  distance: "50px",
+  duaration: 1000,
+  reset: true
 });
+
+scrollReveal.reveal(
+  `#hero .container .text h1, #hero .container .text p, #hero .container .text .button, 
+  #aboutUs .container .text h2, #aboutUs .container .text p, #aboutUs .container .image,
+  #prevEvents .container .text h2, #prevEvents .container .text p`, 
+  { interval: 300 }
+);
+
+scrollReveal.reveal("#prevEvents .container .events .event, #teamMembers .teamMembers .member", { interval: 100 });
